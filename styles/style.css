@@ -1,0 +1,55 @@
+ html {
+   margin: 0;
+   padding: 0;
+ }
+
+
+ .view {
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .petShop {
+   width: 100%;
+   margin: 0 10px;
+ }
+
+ .petShop h2 {
+   text-align: center;
+   margin-top: 30px;
+   font-weight: bold;
+ }
+
+ .petShop h4 {
+   text-align: center;
+   padding: 5px;
+   font-weight: bold;
+ }
+
+ .allcats, .expensive, .fluffy, .cart {
+   width: 24%;
+   padding: 5px;
+   border-radius: 5px;
+   margin: 15px 2px;
+   box-shadow: 1px 1px 10px .1px black;
+   background-color: rgba(255, 255, 255, 0.2);
+ }
+
+ input {
+   float: right;
+   font-size: 18px;
+   padding: 0 5px;
+   border-radius: 4px;
+   background-color:#c2d1d3;
+ }
+
+ li {
+   font-size: 20px;
+   font-weight: 500;
+   margin: 15px;
+ }
+
+ input:hover{
+   cursor: pointer;
+   background-color:#ebedee;
+ }

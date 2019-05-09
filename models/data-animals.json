@@ -1,0 +1,56 @@
+{
+  "dogs": [
+          {
+            "name": "Bobik",
+            "price": "250",
+            "color": "grey"
+          },
+          {
+            "name": "Sharik",
+            "price": "190",
+            "color": "black"
+          },
+          {
+            "name": "Barbos",
+            "price": "300",
+            "color": "white"
+          }
+  ],
+  "cats": [
+          {
+            "name": "Murka",
+            "price": "120",
+            "color": "grey",
+            "fluffy": true
+          },
+          {
+            "name": "Vasya",
+            "price": "80",
+            "color": "black",
+            "fluffy": false
+          },
+          {
+            "name": "Boris",
+            "price": "90",
+            "color": "white",
+            "fluffy": false
+          }
+  ],
+  "hamsters": [
+              {
+                "price": "30",
+                "color": "grey",
+                "fluffy": true
+              },
+              {
+                "price": "40",
+                "color": "black",
+                "fluffy": false
+              },
+              {
+                "price": "35",
+                "color": "white",
+                "fluffy": false
+              }
+  ]
+}
