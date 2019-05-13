@@ -1,6 +1,6 @@
 class Pet  {
     constructor (price, color) {
-        this.id = Math.floor(Math.random() * 1000);
+        this.id = Math.floor(new Date().valueOf()*Math.random());
         this.price = price;
         this.color = color;
     }

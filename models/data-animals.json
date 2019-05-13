@@ -1,36 +1,39 @@
 {
   "dogs": [
           {
-            "name": "Bobik",
+            "name": "Dog 'Bobik'",
             "price": "250",
-            "color": "grey"
+            "color": "grey",
+            "fluffy": false
           },
           {
-            "name": "Sharik",
+            "name": "Dog 'Sharik'",
             "price": "190",
-            "color": "black"
+            "color": "black",
+            "fluffy": false
           },
           {
-            "name": "Barbos",
+            "name": "Dog 'Barbos'",
             "price": "300",
-            "color": "white"
+            "color": "white",
+            "fluffy": false
           }
   ],
   "cats": [
           {
-            "name": "Murka",
+            "name": "Cat 'Murka'",
             "price": "120",
             "color": "grey",
             "fluffy": true
           },
           {
-            "name": "Vasya",
+            "name": "Cat 'Vasya'",
             "price": "80",
             "color": "black",
             "fluffy": false
           },
           {
-            "name": "Boris",
+            "name": "Cat 'Boris'",
             "price": "90",
             "color": "white",
             "fluffy": false

@@ -14,31 +14,86 @@
 <body>
     <div class="petShop">
         <h2>Pet Shop</h2>
+        <div class="add_animal">Add animal</div>
+        <div class="nav_cart">
+            <div class="cardHead">
+                <h4>Cart</h4>
+                <img src="img/cart.svg">
+                <div class="badge">0</div>
+            </div>
+        </div>
+        <div class="confirm">
+            <img src="img/confirm.svg">
+        </div>
         <hr>
-        <div class='view'>
+        <form>
+            <div class="form_header">Add animal to shop:</div>
+            <div class="form-group select">
+                <label for="type">
+                    <select size="1">
+                        <option value="Cat">Cat</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Humster">Hamster</option>
+                    </select>
+                </label>
+            </div>
+            <div class="form-close">X</div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" minlength="2">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" min="2">
+            </div>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" class="form-control" id="color" min="1">
+            </div>
+            <div class="form-group form-check">
+                <label for="fluffy">Fluffy</label>
+                <input type="checkbox" id="fluffy">
+            </div>
+            <input type="button" id="addToShop" value="Add to Shop" onclick="myPetShop.addAnimal()">
+        </form>
+        <div class="view">
             <div class="allcats">
                 <h4>Cats</h4>
-                <ul class='list'></ul>
+                <ul class="catList"></ul>
             </div>
             <div class="expensive">
                 <h4>High cost</h4>
-                <ul class='list'></ul>
+                <ul class='expensiveList'></ul>
             </div>
             <div class="fluffy">
                 <h4>Fluffy or white</h4>
-                <ul class='list'></ul>
-            </div>
-            <div class="cart">
-                <h4>Cart</h4>
-                <ul class='cart-list'></ul>
+                <ul class="flufOrWhiteList"></ul>
             </div>
         </div>
-
+        <div class="cart">
+            <div class="cart__body">
+                <div class="cart__title">Cart</div>
+                <div class="cart__total">Total sum: $<span>0</span></div>
+                <hr>
+                <div class="cart__wrapper">
+                    <div class="empty">
+                        Your cart is empty.
+                    </div>
+                </div>
+                <div class="cart__close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="models/petModels.js"></script>
     <script src="view/petShopView.js"></script>
     <script src="controllers/petShopController.js"></script>
-    <script src="index.js" ></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,6 @@
  html {
    margin: 0;
-   padding: 0;
  }
-
 
  .view {
    display: flex;
@@ -25,30 +23,254 @@
    font-weight: bold;
  }
 
- .allcats, .expensive, .fluffy, .cart {
+ .nav_cart {
+   position: absolute;
+   top: 45px;
+   right: 122px;
+ }
+
+ .allcats, .expensive, .fluffy {
    width: 25%;
    padding: 5px;
    border-radius: 5px;
-   margin: 15px 2px;
+   margin: 15px auto;
    box-shadow: 1px 1px 10px .1px black;
    background-color: rgba(255, 255, 255, 0.2);
  }
 
+ .cardHead {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+ }
+
  input {
    float: right;
-   font-size: 18px;
+   font-size: 14px;
    padding: 0 5px;
    border-radius: 4px;
-   background-color:#c2d1d3;
+   background-color: #C2D1F8;
+ }
+
+ ul {
+   padding: 5px;
  }
 
  li {
-   font-size: 20px;
+   padding: 10px;
+   list-style-type: none;
+   font-size: 15px;
    font-weight: 500;
-   margin: 15px;
+   margin: 10px;
+   box-shadow: 1px 1px 10px 0.1px #d0bdbd;
+   background-color: rgba(255, 255, 255, 0.2);
  }
 
- input:hover{
-   cursor: pointer;
-   background-color:#ebedee;
+ button {
+   float: right;
+   height: 23px;
+   width: 56px;
+   font-size: 14px;
+   padding: 0 5px;
+   border-radius: 4px;
+   background-color: #C2D1F8;
  }
+ #addToShop:hover {
+   cursor: pointer;
+   background-color: #ebedee;
+ }
+
+ button:hover {
+   cursor: pointer;
+   background-color: #ebedee;
+ }
+
+ .confirm {
+   display: none;
+   position: fixed;
+   bottom: 50px;
+   right: 50px;
+   width: 150px;
+   height: 150px;
+ }
+
+ .confirm img {
+   width: 100%;
+ }
+
+ .badge {
+   position: absolute;
+   top: 4px;
+   right: -10px;
+   min-width: 21px;
+   height: 13px;
+   padding: 0px 3px;
+   text-align: center;
+   background: #C2D1F8;
+   border-radius: 8px;
+   font-size: 13px;
+   line-height: 11px;
+   color: #000;
+   font-weight: bold;
+ }
+
+ .cart__body {
+   display: none;
+   position: absolute;
+   top: 25%;
+   left: 25%;
+   width: 600px;
+   min-height: 200px;
+   max-height: 640px;
+   background-color: #fff;
+   padding: 25px;
+   overflow: hidden;
+   box-shadow: 1px 1px 10px 0.1px #d0bdbd;
+ }
+
+ .cart__title {
+   font-size: 28px;
+   font-weight: Bold;
+   color: rgba(0, 0, 0, .4);
+ }
+
+ .cart__wrapper {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   margin-top: 5px;
+ }
+
+ .cart__wrapper div {
+   width: 165px;
+   padding: 5px;
+   list-style-type: none;
+   font-size: 14px;
+   font-weight: 500;
+   margin: 8px;
+   box-shadow: 1px 1px 10px 0.1px #d0bdbd;
+ }
+
+ .cart__wrapper input {
+   border-radius: 5px;
+   margin-left: 8px;
+   border: 0;
+   font-weight: bold;
+   background-color: #fff;
+ }
+
+ .empty {
+   font-size: 24px;
+   color: rgba(0, 0, 0, .4);
+ }
+
+ .cart__close {
+   position: absolute;
+   top: 25px;
+   right: 25px;
+   cursor: pointer;
+ }
+
+ .cart__total {
+   font-size: 22px;
+   font-weight: 500;
+ }
+
+ .add_animal {
+   position: absolute;
+   font-size: 24px;
+   font-weight: bold;
+   top: 49px;
+   left: 119px;
+   cursor: pointer;
+ }
+
+ .nav_cart:hover {
+   color: #C2D1F8;
+ }
+
+ .add_animal:hover {
+   color: #C2D1F8;
+ }
+
+ form {
+   display: none;
+   position: absolute;
+   top: 13%;
+   left: 22%;
+   width: 210px;
+   background-color: #fff;
+   padding: 14px;
+   overflow: hidden;
+   box-shadow: 1px 1px 10px 0.1px #d0bdbd;
+ }
+
+ .form-check {
+   position: relative;
+   display: block;
+   padding-left: 2px;
+   padding-top: -3px;
+ }
+
+ .checkbox {
+   margin-top: 10px;
+ }
+
+ .form-check-label {
+   margin-bottom: 0px;
+   margin-top: 24px;
+ }
+
+ .form-group {
+   margin-bottom: 16px;
+   width: 100%;
+   height: 30px;
+ }
+
+ input[type=checkbox] {
+   box-sizing: border-box;
+   padding: 0px;
+   margin-top: 15px;
+   margin-right: 112px;
+   margin-bottom: 10px;
+ }
+
+ .form-close {
+   position: absolute;
+   top: 6px;
+   right: 11px;
+   cursor: pointer;
+   font-weight: bold;
+ }
+
+ label {
+   display: inline-block;
+   margin-bottom: 3px;
+   margin-top: 8px;
+ }
+
+ .form_header {
+   font-size: 15px;
+   font-weight: 500;
+   margin-top: 19px;
+   margin-bottom: 13px;
+ }
+
+ .form-group {
+  width: 100%;
+  height: 37px;
+}
+
+select {
+  width: 180px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 4px;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

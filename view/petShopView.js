@@ -1,93 +1,115 @@
 class PetShopView {
-    constructor(animals, cart) {
-        this.animals = animals;
-        this.cart = cart;
-    }
 
-    showListOfAnimals() {
-
-        let cats = this.getCats(this.animals);
-        let expensive = this.getExpensiveAnimals(this.animals);
-        let fluffyOrWhite = this.getfluffyOrWhiteAnimals(this.animals);
-
-        this.createCatsList(cats);
-        this.createExpensiveList(expensive);
-        this.createfluffyOrWhiteList(fluffyOrWhite);
-        this.createCartList(this.cart);
-
-    }
     createCatsList(animals) {
-        this.createContent(animals, 0);
+        this.createContent(animals, '.catList');
     }
 
     createExpensiveList(animals) {
-        this.createContent(animals, 1);
+        this.createContent(animals, '.expensiveList');
     }
 
     createfluffyOrWhiteList(animals) {
-        this.createContent(animals, 2);
-    }
-
-
-    getCats(animals) {
-        let cats = animals.filter(animal => (animal instanceof Cat));
-        return cats;
-    }
-
-    getExpensiveAnimals(animals) {
-        let average = this.getAveragePrice(animals);
-        let expensive = animals.filter(animal => parseInt(animal.price) > average);
-        return expensive;
-    }
-    getAveragePrice(animals) {
-        let prices = animals.map(animal => animal.price);
-        let average = prices.reduce((sum, curr) => parseInt(sum) + parseInt(curr)) / prices.length;
-        return average;
-    }
-
-    getfluffyOrWhiteAnimals(animals) {
-        let fluffyOrWhite = animals.filter(animal => animal.color === 'white' || animal.fluffy);
-        return fluffyOrWhite;
+        this.createContent(animals, '.flufOrWhiteList');
     }
 
     // creating list with content of animals from the cart
     createCartList(animals) {
-        let cartList = document.querySelector('.cart-list');
-        cartList.innerHTML = '';
+        let cartWrapper = document.querySelector('.cart__wrapper')
+        cartWrapper.innerHTML = '';
 
-        for (let i = 0; i < animals.length; i++) {
+        animals.forEach((animal) => {
 
-            let li = document.createElement('li');
+            let div = document.createElement('div');
             let btn = document.createElement('input');
             btn.type = 'button';
-            btn.value = 'Delete';
-            btn.addEventListener('click', () => myPetShop.delAnimalFromCart(animals[i].id));
-
-            let name = animals[i].name ? animals[i].name : 'Hamster';
-            li.innerHTML = `${name} - $${animals[i].price} `
-            li.appendChild(btn);
-            cartList.appendChild(li);
-        }
+            btn.value = 'X';
+            btn.addEventListener('click', () => myPetShop.delAnimalFromCart(animal.id));
+            let name = animal.name ? animal.name : 'Hamster';
+            div.innerHTML = `${name} - $${animal.price}`
+            div.appendChild(btn);
+            cartWrapper.appendChild(div);
+        })
     }
 
     //creating  list with content of animals
-    createContent(animals, index) {
-        let getAnimalsList = document.querySelectorAll('.list');
-        getAnimalsList[index].innerHTML = '';
+    createContent(animals, classSelector) {
+        let ul = document.querySelector(classSelector);
+        ul.innerHTML = '';
 
-        for (let i = 0; i < animals.length; i++) {
+        animals.forEach((animal) => {
 
             let li = document.createElement('li');
-            let btn = document.createElement('input');
-            btn.type = 'button';
-            btn.value = 'Add to Cart';
-            btn.addEventListener('click', () => myPetShop.removeAnimalToCart(animals[i].id));
+            let btn = document.createElement('button');
+            btn.value = 'Buy me';
+            btn.addEventListener('click', () => myPetShop.removeAnimalToCart(animal.id));
 
-            let name = animals[i].name ? animals[i].name : 'Hamster';
-            li.innerHTML = `${name} - $${animals[i].price} `;
+            let name = animal.name ? animal.name : 'Hamster';
+            let fluffy = animal.fluffy ? 'fluffy' : 'not fluffy';
+            li.innerHTML = `${name} <br/> Cost: $${animal.price} <br/>
+                            Color: ${animal.color} <br/> ${fluffy} `;
             li.appendChild(btn);
-            getAnimalsList[index].appendChild(li);
-        }
+            ul.appendChild(li);
+        })
     }
+
+    //hanging listeners on elements
+
+    initClicks() {
+        let cart = document.querySelector('.nav_cart');
+        cart.addEventListener('click', this.openCart);
+        let closeCart = document.querySelector('.cart__close');
+        closeCart.addEventListener('click', this.closeCart);
+        let addForm = document.querySelector('.add_animal');
+        addForm.addEventListener('click', this.openForm);
+        let closeForm = document.querySelector('.form-close');
+        closeForm.addEventListener('click', this.closeForm);
+    }
+
+    openCart() {
+        let cart = document.querySelector('.cart__body');
+        cart.style.display = 'block';
+    };
+
+    closeCart() {
+        let cart = document.querySelector('.cart__body');
+        cart.style.display = 'none';
+    };
+
+    openForm() {
+        let form = document.querySelector('form');
+        form.style.display = 'block';
+    }
+
+    closeForm() {
+        let form = document.querySelector('form');
+        form.style.display = 'none';
+    }
+
+    clearForm() {
+        let input = document.querySelectorAll('input');
+        input[0].value = '';
+        input[1].value = '';
+        input[2].value = '';
+        input[3].checked = '';
+    }
+
+    //show animation of cart
+
+    showConfirm() {
+        let confirm = document.querySelector('.confirm');
+        confirm.style.display = 'block';
+        let counter = 100;
+        const timerId = setInterval(frame, 0.6);
+        function frame() {
+            if (counter == 10) {
+                clearInterval(timerId);
+                confirm.style.display = 'none';
+            } else {
+                counter--;
+                confirm.style.transform = `translateY(-${counter}px)`;
+                confirm.style.opacity = '.' + counter;
+            };
+        };
+    };
 }
 
