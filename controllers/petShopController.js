@@ -1,25 +1,26 @@
 class PetShop {
     constructor() {
-        this.animals = [];
         this.cats = [];
         this.expensive = [];
         this.fluffyOrWhite = [];
         this.cart = [];
+        this.animals = [];
+        this.PetShopModel = new PetShopModel(this.animals);
         this.PetShopView = new PetShopView();
     }
 
     init() {
-        fetch('https://api.jsonbin.io/b/5cd82271c059b662551d3ac9',
+        fetch('https://api.jsonbin.io/b/5cdc0be80e7bd93ffabe80e3',
             {
                 method: 'GET',
                 headers: { 'secret-key': '$2a$10$mlpQded4G2YkJLS9U5/m.eDAMES2pDQgtY79Btaq/6FwrTowAnkYW' }
             })
             .then(response => response.json())
             .then(json => {
-                this.animals = this.createAnimals(json);
+                this.animals = this.PetShopModel.createAnimals(json);
                 this.getListOfAnimals(this.animals);
                 this.createListsOfAnimals();
-                this.PetShopView.initClicks();
+                this.initClicks();
             })
             .catch(error => console.error(error));
     }
@@ -37,7 +38,7 @@ class PetShop {
         this.PetShopView.createCartList(this.cart);
     }
 
-    removeAnimalToCart(id) {
+    addAnimalToCart(id) {
         let removeIndex = this.animals.map(animal => animal.id).indexOf(id);
         let removedAnimal = this.animals.splice(removeIndex, 1);
 
@@ -48,7 +49,6 @@ class PetShop {
 
         this.createListsOfAnimals();
         this.PetShopView.showConfirm();
-
     }
 
     delAnimalFromCart(id) {
@@ -61,8 +61,6 @@ class PetShop {
         this.createListsOfAnimals();
     }
 
-
-
     getCats(animals) {
         return animals.filter(animal => (animal instanceof Cat));
     }
@@ -72,6 +70,7 @@ class PetShop {
         if (animals.length === 1) return animals;
         return animals.filter(animal => parseInt(animal.price) > average);
     }
+
     getAveragePrice(animals) {
         let prices = animals.map(animal => animal.price);
         if (prices.length === 0) return;
@@ -84,29 +83,13 @@ class PetShop {
         return animals.filter(animal => animal.color === 'white' || animal.fluffy);
     }
 
-    //create instances of animals
-    createAnimals(data) {
-        let animals = [];
-        //make array of animals
-        data.dogs.map(item => {
-            animals.push(new Dog(item.name, item.price, item.color));
-        });
-        data.cats.map(item => {
-            animals.push(new Cat(item.name, item.price, item.color, item.fluffy));
-        });
-        data.hamsters.map(item => {
-            animals.push(new Hamster(item.price, item.color, item.fluffy));
-        });
-        return animals;
-    }
-
     caclQuantity(cart) {
         let div = document.querySelector('.badge');
         div.textContent = cart.length;
     }
 
     calcSum(animals) {
-        let div = document.querySelector('.cart__total > span');
+        let div = document.querySelector('.cart_total > span');
         let cost = animals.map((animal) => animal.price);
         if (cost.length === 0) div.textContent = 0;
         else {
@@ -114,6 +97,19 @@ class PetShop {
         }
     }
 
+    //hanging listeners on elements
+    initClicks() {
+        let cart = document.querySelector('.nav_cart');
+        cart.addEventListener('click', this.PetShopView.openCart);
+        let closeCart = document.querySelector('.cart_close');
+        closeCart.addEventListener('click', this.PetShopView.closeCart);
+        let addForm = document.querySelector('.add_animal');
+        addForm.addEventListener('click', this.PetShopView.openForm);
+        let closeForm = document.querySelector('.form-close');
+        closeForm.addEventListener('click', this.PetShopView.closeForm);
+    }
+
+    //adding animal to shop
     addAnimal() {
         this.addAnimalToShop(this.animals);
     }
@@ -121,63 +117,24 @@ class PetShop {
     addAnimalToShop(animals) {
         let input = document.querySelectorAll('input');
         let select = document.querySelector('select').value;
-        let name = input[0].value;
-        let price = parseFloat(input[1].value);
+        let name = input[0].value.trim();
+        let price = input[1].value.trim();
         let color = input[2].value;
         let fluffy = input[3].checked;
 
-        if (select === 'Cat')
-            animals.push(new Cat('Cat '+ name, price, color, fluffy));
-
-        else if (select === 'Dog')
-            animals.push(new Dog('Dog '+ name, price, color, fluffy));
-
-        else{
-            animals.push(new Hamster(price, color, fluffy));
+        if (!name) {
+            input[0].classList.add("is-invalid");
         }
-        this.PetShopView.closeForm();
-        this.PetShopView.clearForm();
-        this.getListOfAnimals(this.animals);
-        this.createListsOfAnimals();
+        else if (!price || price <= 0) {
+            input[0].classList.remove("is-invalid");
+            input[1].classList.add("is-invalid");
+        }
+        else {
+            this.PetShopModel.createNewAnimal(animals, select, name, price, color, fluffy);
+            this.PetShopView.closeForm();
+            this.PetShopView.clearForm();
+            this.getListOfAnimals(this.animals);
+            this.createListsOfAnimals();
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fetch('https://api.jsonbin.io/b/5cd82271c059b662551d3ac9',
-// {
-//     method: 'PUT',
-//     headers: { 'Content-type': 'application/json', 'secret-key': '$2a$10$mlpQded4G2YkJLS9U5/m.eDAMES2pDQgtY79Btaq/6FwrTowAnkYW' },
-//     body: JSON.stringify(select)
-// })
-// .then(response => response.json())
-// .then(json => console.log(json))
-// .catch(error => console.error(error));
-// fetch('https://api.jsonbin.io/b/5cd82271c059b662551d3ac9',
-// {
-//     method: 'GET',
-//     headers: { 'secret-key': '$2a$10$mlpQded4G2YkJLS9U5/m.eDAMES2pDQgtY79Btaq/6FwrTowAnkYW' }
-// })
-// .then(response => response.json())
-// .then(json => console.log(json))
-// }

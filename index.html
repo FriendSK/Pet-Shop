@@ -13,7 +13,7 @@
 
 <body>
     <div class="petShop">
-        <h2>Pet Shop</h2>
+        <div class="petShopLogo"></div>
         <div class="add_animal">Add animal</div>
         <div class="nav_cart">
             <div class="cardHead">
@@ -30,7 +30,7 @@
             <div class="form_header">Add animal to shop:</div>
             <div class="form-group select">
                 <label for="type">
-                    <select size="1">
+                    <select class="form-control" size="1">
                         <option value="Cat">Cat</option>
                         <option value="Dog">Dog</option>
                         <option value="Humster">Hamster</option>
@@ -38,23 +38,28 @@
                 </label>
             </div>
             <div class="form-close">X</div>
+
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" minlength="2">
+                <label for="name">Name <span>*</span></label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="invalid-feedback">
+                Please provide a name.
             </div>
             <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" class="form-control" id="price" min="2">
+                <label for="price">Price <span>*</span></label>
+                <input type="number" class="form-control" id="price">
             </div>
             <div class="form-group">
                 <label for="color">Color</label>
-                <input type="text" class="form-control" id="color" min="1">
+                <input type="text" class="form-control" id="color">
             </div>
             <div class="form-group form-check">
                 <label for="fluffy">Fluffy</label>
                 <input type="checkbox" id="fluffy">
             </div>
-            <input type="button" id="addToShop" value="Add to Shop" onclick="myPetShop.addAnimal()">
+            <input type="button" class="btn btn-info" id="addToShop" value="Add to Shop"
+                onclick="myPetShop.addAnimal()">
         </form>
         <div class="view">
             <div class="allcats">
@@ -71,16 +76,13 @@
             </div>
         </div>
         <div class="cart">
-            <div class="cart__body">
-                <div class="cart__title">Cart</div>
-                <div class="cart__total">Total sum: $<span>0</span></div>
+            <div class="cart_body">
+                <div class="cart_title">Cart</div>
+                <div class="cart_total">Total sum: $<span>0</span></div>
                 <hr>
-                <div class="cart__wrapper">
-                    <div class="empty">
-                        Your cart is empty.
-                    </div>
+                <div class="cart_wrapper">
                 </div>
-                <div class="cart__close">
+                <div class="cart_close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -90,6 +92,7 @@
             </div>
         </div>
     </div>
+    <script src="models/PetShopModel.js"></script>
     <script src="models/petModels.js"></script>
     <script src="view/petShopView.js"></script>
     <script src="controllers/petShopController.js"></script>

@@ -14,7 +14,7 @@ class PetShopView {
 
     // creating list with content of animals from the cart
     createCartList(animals) {
-        let cartWrapper = document.querySelector('.cart__wrapper')
+        let cartWrapper = document.querySelector('.cart_wrapper')
         cartWrapper.innerHTML = '';
 
         animals.forEach((animal) => {
@@ -39,9 +39,10 @@ class PetShopView {
         animals.forEach((animal) => {
 
             let li = document.createElement('li');
-            let btn = document.createElement('button');
+            let btn = document.createElement('input');
+            btn.className = "btn btn-info";
             btn.value = 'Buy me';
-            btn.addEventListener('click', () => myPetShop.removeAnimalToCart(animal.id));
+            btn.addEventListener('click', () => myPetShop.addAnimalToCart(animal.id));
 
             let name = animal.name ? animal.name : 'Hamster';
             let fluffy = animal.fluffy ? 'fluffy' : 'not fluffy';
@@ -52,26 +53,13 @@ class PetShopView {
         })
     }
 
-    //hanging listeners on elements
-
-    initClicks() {
-        let cart = document.querySelector('.nav_cart');
-        cart.addEventListener('click', this.openCart);
-        let closeCart = document.querySelector('.cart__close');
-        closeCart.addEventListener('click', this.closeCart);
-        let addForm = document.querySelector('.add_animal');
-        addForm.addEventListener('click', this.openForm);
-        let closeForm = document.querySelector('.form-close');
-        closeForm.addEventListener('click', this.closeForm);
-    }
-
     openCart() {
-        let cart = document.querySelector('.cart__body');
+        let cart = document.querySelector('.cart_body');
         cart.style.display = 'block';
     };
 
     closeCart() {
-        let cart = document.querySelector('.cart__body');
+        let cart = document.querySelector('.cart_body');
         cart.style.display = 'none';
     };
 
@@ -91,15 +79,16 @@ class PetShopView {
         input[1].value = '';
         input[2].value = '';
         input[3].checked = '';
+        input[0].classList.remove("is-invalid");
+        input[1].classList.remove("is-invalid");
     }
 
     //show animation of cart
-
     showConfirm() {
         let confirm = document.querySelector('.confirm');
         confirm.style.display = 'block';
         let counter = 100;
-        const timerId = setInterval(frame, 0.6);
+        const timerId = setInterval(frame, 6);
         function frame() {
             if (counter == 10) {
                 clearInterval(timerId);
