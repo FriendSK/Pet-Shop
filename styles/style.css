@@ -1,7 +1,3 @@
- html {
-   margin: 0;
- }
-
  body {
    margin: 0;
    width: 100%;
@@ -55,7 +51,7 @@
  .cardHead {
    position: absolute;
    top: 24px;
-   right: 140px;
+   right: 150px;
    display: flex;
    align-items: center;
    cursor: pointer;
@@ -131,8 +127,16 @@
    font-weight: bold;
  }
 
- .cart_body {
+ .cart {
    display: none;
+   position: fixed;
+   top: 0;
+   background-color: rgba(0, 0, 0, .3);
+   width: 100%;
+   height: 100%;
+ }
+
+ .cart_body {
    position: absolute;
    top: 25%;
    left: 29%;

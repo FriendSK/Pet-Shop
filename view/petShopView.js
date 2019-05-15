@@ -54,13 +54,15 @@ class PetShopView {
     }
 
     openCart() {
-        let cart = document.querySelector('.cart_body');
+        let cart = document.querySelector('.cart');
         cart.style.display = 'block';
+        document.body.style.overflow = 'auto';
     };
 
     closeCart() {
-        let cart = document.querySelector('.cart_body');
+        let cart = document.querySelector('.cart');
         cart.style.display = 'none';
+        document.body.style.overflow = '';
     };
 
     openForm() {
