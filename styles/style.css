@@ -18,8 +18,8 @@
  .petShop {
    width: 100%;
    margin: 0 auto;
-   background: url('https://cdn2.arhivurokov.ru/multiurok/html/2017/11/27/s_5a1bfd3d55d53/756841_1.png') no-repeat bottom right  fixed ;
-   background-size: 200px ;
+   background: url('https://cdn2.arhivurokov.ru/multiurok/html/2017/11/27/s_5a1bfd3d55d53/756841_1.png') no-repeat bottom right fixed;
+   background-size: 200px;
  }
 
  .petShopLogo {
@@ -52,16 +52,13 @@
    background-color: rgba(255, 255, 255, 0.2);
  }
 
-.cardHead {
- 
+ .cardHead {
+   position: absolute;
+   top: 24px;
+   right: 140px;
    display: flex;
    align-items: center;
    cursor: pointer;
- }
- .petShop .cartLogo {
-  position: absolute;
-  top: 24px;
-  right: 130px;
  }
 
  input {
