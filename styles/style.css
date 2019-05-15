@@ -52,13 +52,16 @@
    background-color: rgba(255, 255, 255, 0.2);
  }
 
- .cardHead {
-   position: absolute;
-   top: 24px;
-   right: 109px;
-   /* display: flex; */
+.cardHead {
+ 
+   display: flex;
    align-items: center;
    cursor: pointer;
+ }
+ .petShop .cartLogo {
+  position: absolute;
+  top: 24px;
+  right: 130px;
  }
 
  input {
