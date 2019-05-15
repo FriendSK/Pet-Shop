@@ -7,7 +7,7 @@
    width: 100%;
    height: 100%;
    background: url('https://static.tildacdn.com/tild3161-3536-4632-b439-636563353465/Infinity_new_white_c.jpg') no-repeat fixed;
-   background-size: auto;
+   background-size: cover;
  }
 
  .view {
@@ -19,7 +19,7 @@
    width: 100%;
    margin: 0 auto;
    background: url('https://cdn2.arhivurokov.ru/multiurok/html/2017/11/27/s_5a1bfd3d55d53/756841_1.png') no-repeat bottom right  fixed ;
-   background-size: 180px ;
+   background-size: 200px ;
  }
 
  .petShopLogo {
@@ -54,9 +54,9 @@
 
  .cardHead {
    position: absolute;
-   right: 109px;
    top: 24px;
-   display: flex;
+   right: 109px;
+   /* display: flex; */
    align-items: center;
    cursor: pointer;
  }
@@ -135,8 +135,8 @@
    display: none;
    position: absolute;
    top: 25%;
-   left: 27%;
-   width: 600px;
+   left: 29%;
+   width: 42%;
    min-height: 200px;
    max-height: 640px;
    background-color: #fff;
@@ -160,7 +160,7 @@
  }
 
  .cart_wrapper div {
-   width: 165px;
+   width: 30%;
    padding: 5px;
    list-style-type: none;
    font-size: 14px;
@@ -200,7 +200,7 @@
    font-size: 24px;
    font-weight: 450;
    top: 74px;
-   left: 227px;
+   left: 18%;
    cursor: pointer;
  }
 
@@ -217,7 +217,7 @@
    display: none;
    position: absolute;
    top: 14%;
-   left: 27%;
+   left: 28%;
    width: 210px;
    background-color: #fff;
    padding: 14px;
