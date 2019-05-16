@@ -12,25 +12,6 @@ class PetShopView {
         this.createContent(animals, '.flufOrWhiteList');
     }
 
-    // creating list with content of animals from the cart
-    createCartList(animals) {
-        let cartWrapper = document.querySelector('.cart_wrapper')
-        cartWrapper.innerHTML = '';
-
-        animals.forEach((animal) => {
-
-            let div = document.createElement('div');
-            let btn = document.createElement('input');
-            btn.type = 'button';
-            btn.value = 'X';
-            btn.addEventListener('click', () => myPetShop.delAnimalFromCart(animal.id));
-            let name = animal.name ? animal.name : 'Hamster';
-            div.innerHTML = `${name} - $${animal.price}`
-            div.appendChild(btn);
-            cartWrapper.appendChild(div);
-        })
-    }
-
     //creating  list with content of animals
     createContent(animals, classSelector) {
         let ul = document.querySelector(classSelector);
@@ -50,6 +31,25 @@ class PetShopView {
                             Color: ${animal.color} <br/> ${fluffy} `;
             li.appendChild(btn);
             ul.appendChild(li);
+        })
+    }
+
+    // creating list with content of animals from the cart
+    createCartList(animals) {
+        let cartWrapper = document.querySelector('.cart_wrapper')
+        cartWrapper.innerHTML = '';
+
+        animals.forEach((animal) => {
+
+            let div = document.createElement('div');
+            let btn = document.createElement('input');
+            btn.type = 'button';
+            btn.value = 'X';
+            btn.addEventListener('click', () => myPetShop.delAnimalFromCart(animal.id));
+            let name = animal.name ? animal.name : 'Hamster';
+            div.innerHTML = `${name} - $${animal.price}`
+            div.appendChild(btn);
+            cartWrapper.appendChild(div);
         })
     }
 
